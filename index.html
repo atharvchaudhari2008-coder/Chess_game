@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chess Master Advanced</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="app">
+
+        <header>
+            <p class="eyebrow">CLASSIC STRATEGY • TWO PLAYER</p>
+
+            <h1>Chess Master <span>Advanced</span></h1>
+
+            <p class="subtitle">
+                Click a piece to see every legal move.
+            </p>
+        </header>
+
+        <!-- PLAYER SETUP -->
+
+        <div class="player-setup" id="playerSetup">
+
+            <h2>♟ Player Setup</h2>
+
+            <label for="whitePlayer">White Player Name</label>
+
+            <input
+                type="text"
+                id="whitePlayer"
+                placeholder="Enter White player name"
+                maxlength="20"
+            >
+
+            <label for="blackPlayer">Black Player Name</label>
+
+            <input
+                type="text"
+                id="blackPlayer"
+                placeholder="Enter Black player name"
+                maxlength="20"
+            >
+
+            <button id="startGameBtn">
+                Start Game
+            </button>
+
+        </div>
+
+        <!-- PLAYER INFORMATION -->
+
+        <div class="player-info" id="playerInfo" style="display:none;">
+
+            <div class="player-name">
+                ♔ White:
+                <span id="whiteNameDisplay">White</span>
+            </div>
+
+            <div class="player-name">
+                ♚ Black:
+                <span id="blackNameDisplay">Black</span>
+            </div>
+
+        </div>
+
+        <!-- CHESS GAME -->
+
+        <section class="game-layout">
+
+            <div class="board-panel">
+
+                <div class="board-top">
+                    <span>WHITE</span>
+                    <span id="turnLabel">WHITE TO MOVE</span>
+                    <span>BLACK</span>
+                </div>
+
+                <div id="board"></div>
+
+                <div class="board-bottom">
+                    <span>Click to move</span>
+                    <span>Drag and drop</span>
+                </div>
+
+            </div>
+
+            <!-- SIDE PANEL -->
+
+            <aside class="side-panel">
+
+                <div class="status-card">
+
+                    <h3>GAME STATUS</h3>
+
+                    <h2 id="status">White to move</h2>
+
+                    <p id="hint">
+                        Start the game to begin playing.
+                    </p>
+
+                </div>
+
+                <div class="action-row">
+
+                    <button id="undoBtn" disabled>
+                        ↶ Undo
+                    </button>
+
+                    <button id="flipBtn" disabled>
+                        ⇅ Flip Board
+                    </button>
+
+                </div>
+
+                <button id="restartBtn" class="restart" disabled>
+                    + New Game
+                </button>
+
+                <!-- MOVE GUIDE -->
+
+                <div class="legend">
+
+                    <h3>Move Guide</h3>
+
+                    <p>
+                        <span class="dot legal"></span>
+                        Legal move
+                    </p>
+
+                    <p>
+                        <span class="dot capture"></span>
+                        Capture available
+                    </p>
+
+                    <p>
+                        <span class="dot selected"></span>
+                        Selected piece
+                    </p>
+
+                    <p>
+                        <span class="dot last"></span>
+                        Last move
+                    </p>
+
+                </div>
+
+                <!-- MOVE HISTORY -->
+
+                <div class="history-card">
+
+                    <div class="history-title">
+
+                        <h3>Move History</h3>
+
+                        <span id="moveCount">0 moves</span>
+
+                    </div>
+
+                    <ol id="history">
+                        <li>No moves yet.</li>
+                    </ol>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+        <footer>
+            Chess Master Advanced | Two Player Chess Game
+        </footer>
+
+    </main>
+
+    <!-- CHECKMATE ANIMATION -->
+
+    <div id="checkmateOverlay">
+
+        <div class="victory-box">
+
+            <div class="crown">♛</div>
+
+            <h1>CHECKMATE!</h1>
+
+            <h2 id="winnerText">White Wins!</h2>
+
+            <p>
+                Victory belongs to the best strategist.
+            </p>
+
+            <button id="playAgainBtn">
+                Play Again
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT LIBRARIES -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
