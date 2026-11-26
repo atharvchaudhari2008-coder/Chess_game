@@ -464,6 +464,15 @@ footer {
     .board-bottom {
         font-size: 9px;
     }
+    /* Click-to-move chessboard */
+
+#board .square-55d63 {
+    cursor: pointer;
+}
+
+#board.game-active .square-55d63:hover {
+    filter: brightness(1.15);
+}
 
     .victory-box {
         padding: 30px 18px;
