@@ -11,88 +11,20 @@ $(function () {
 
     let gameStarted = false;
 
-    // Create chessboard
+    
 
-    const board = Chessboard('board', {
+    // Create chessboard with click-to-move functionality
 
-        position: 'start',
+const board = Chessboard('board', {
 
-        draggable: true,
+    position: 'start',
 
-        pieceTheme:
-            'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png',
+    draggable: false,
 
-        onDragStart: function (source, piece) {
+    pieceTheme:
+        'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png'
 
-            if (!gameStarted || game.game_over()) {
-                return false;
-            }
-
-            if (
-                (game.turn() === 'w' && piece.startsWith('b')) ||
-                (game.turn() === 'b' && piece.startsWith('w'))
-            ) {
-                return false;
-            }
-
-            selectSquare(source);
-
-        },
-
-        onDrop: function (source, target) {
-
-            if (!gameStarted || game.game_over()) {
-                return 'snapback';
-            }
-
-            const move = game.move({
-
-                from: source,
-                to: target,
-                promotion: 'q'
-
-            });
-
-            if (move === null) {
-
-                clearHighlights();
-
-                selectedSquare = null;
-                legalMoves = [];
-
-                drawLastMove();
-
-                return 'snapback';
-
-            }
-
-            lastMove = {
-                from: source,
-                to: target
-            };
-
-            selectedSquare = null;
-            legalMoves = [];
-
-            clearHighlights();
-
-            updateGame();
-
-        },
-
-        onSnapEnd: function () {
-
-            board.position(game.fen());
-
-            clearHighlights();
-
-            drawLastMove();
-
-        }
-
-    });
-
-
+});
     // Clear highlights
 
     function clearHighlights() {
